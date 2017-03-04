@@ -1,7 +1,8 @@
 const User = require('../models/user');
+const oauth = require('../config/oauth');
 
 function sessionsNew(req, res) {
-  res.render('sessions/new');
+  res.render('sessions/new', { oauth });
 }
 
 function sessionsCreate(req, res, next) {
@@ -9,8 +10,7 @@ function sessionsCreate(req, res, next) {
     .findOne({ email: req.body.email })
     .then((user) => {
       if(!user || !user.validatePassword(req.body.password)) {
-        req.flash('danger', 'Unknown email/password combination');
-        return res.redirect('/login');
+        return res.unauthorized('/login', 'Unknown credentials');
       }
 
       req.session.userId = user.id; // put the user ID on the session

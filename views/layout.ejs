@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>project-2</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="/js/app.js" charset="utf-8"></script>
+    <title>SipAdvisor</title>
+    <% include ./partials/stylesheets %>
   </head>
   <body>
+    <% include ./partials/navbar %>
     <% for(const type in messages) { %>
       <div class="<%= type %>">
         <h5><%= messages[type] %></h5>
@@ -15,5 +15,6 @@
     <main>
       <%- body %>
     </main>
+    <% include ./partials/scripts %>
   </body>
 </html>
