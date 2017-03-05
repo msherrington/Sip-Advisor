@@ -1,0 +1,34 @@
+<h1>Edit Profile</h1>
+
+  <form method="POST" action="/users/<%= user.id %>">
+    <input type="hidden" name="_method" value="PUT">
+
+    <div>
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username"  value="<%= user.username %>">
+    </div>
+
+    <div>
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email"  value="<%= user.email %>">
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <input type="text" name="password" id="password"  value="<%= user.password %>">
+    </div>
+
+    <div>
+      <img src="<%= user.profileImageSRC %>" alt="Profile Image">
+      <label for="profileImage">Profile Image</label>
+      <input type="file" name="profileImage" id="profileImage" value="<%= user.profileImage %>">
+    </div>
+
+    <div>
+      <label for="bio">About Me</label>
+      <textarea name="bio"><%= user.bio %></textarea>
+    </div>
+
+    <button class="button">Update</button>
+  </form>
+</div>

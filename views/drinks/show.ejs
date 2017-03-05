@@ -1,0 +1,15 @@
+<h1>Individual Drinks</h1>
+
+<div class="row">
+<img src="<%= drink.imageSRC %>">
+<h3><%= drink.name %></h3>
+<p><%= drink.description %></p>
+<p><%= drink.otherInfo %></p>
+<% if(locals.isAuthenticated) { %>
+  <a href="/drinks/<%= drink.id %>/edit" class="button">Edit</a>
+  <form action="/drinks/<%= drink.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE"/>
+    <button class="button">Delete</button>
+  </form>
+<% } %>
+</div>

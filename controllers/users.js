@@ -1,31 +1,77 @@
-function showRoute(req, res) {
-  res.render('users/show');
-}
+const User = require('../models/user');
 
-function newImageRoute(req, res) {
-  res.render('users/newImage');
-}
-
-function createImageRoute(req, res, next) {
-  if(req.file) req.body.filename = req.file.key;
-
-  // For some reason multer's req.body doesn't behave like body-parser's
-  req.body = Object.assign({}, req.body);
-
-  req.user.images.push(req.body);
-
-  req.user
-    .save()
-    .then(() => res.redirect('/user'))
+function usersIndex(req, res) {
+  User
+    .find()
+    .exec()
+    .then((users) => res.render('users/index', { users }))
     .catch((err) => {
-      console.log(err);
-      if(err.name === 'ValidationError') return res.badRequest('/user/images/new', err.toString());
-      next(err);
+      res.status(500).end(err);
     });
 }
 
+function usersShow(req, res, next) {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then((user) => {
+      if(!user) res.notFound();
+      res.render('users/show', { user });
+    })
+    .catch(next);
+}
+
+function usersEdit(req, res, next) {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then((user) => {
+      if(!user) res.notFound();
+      res.render('users/edit', { user });
+    })
+    .catch(next);
+}
+
+function usersUpdate(req, res, next) {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then((user) => {
+      if(!user) return res.notFound();
+
+      for(const field in req.body) {
+        user[field] = req.body[field];
+      }
+
+      return user.save();
+    })
+    .then((user) => {
+      req.flash('success', `${user.name} has been updated.`);
+      res.redirect(`/users/${user.id}`);
+    })
+    .catch(next);
+}
+
+// function usersDelete(req, res, next) {
+//   User
+//     .findById(req.params.id)
+//     .exec()
+//     .then((user) => {
+//       if(!user) res.notFound();
+//       return user.remove();
+//     })
+//     .then((user) => {
+//       req.flash('success', `${user.name} has been deleted.`);
+//       res.redirect('/users');
+//     })
+//     .catch(next);
+// }
+
 module.exports = {
-  show: showRoute,
-  newImage: newImageRoute,
-  createImage: createImageRoute
+  index: usersIndex,
+  show: usersShow,
+  edit: usersEdit,
+  update: usersUpdate
+  // delete: usersDelete
+
 };

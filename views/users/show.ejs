@@ -1,13 +1,16 @@
 <h1><%= user.username %>'s Profile</h1>
+
 <img src="<%= user.profileImageSRC %>" alt="<%= user.profileImageSRC %>"><br>
 <%# <a href="/user/images/new">Add image</a>%>
 <h2>About Me</h2>
 <p><%= user.description %></p>
+
+<% if(locals.isAuthenticated) { %>
+    <a href="/users/<%= user.id %>/edit" class="button">Edit Profile</a>
+    <form action="/users/<%= user.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE"/>
+      <button class="button">Delete Profile</button>
+    </form>
+  <% } %>
 <hr>
 <h1><%= user.username %>'s posts</h1>
-<div class="feed">
-  <% user.drinks.forEach((drink) => { %>
-    <img src="<%= drink.src %>" alt="<%= drink.caption %>">
-    <p><%= drink.caption %></p>
-  <% }) %>
-</div>

@@ -4,9 +4,9 @@
       <ul class="dropdown menu" data-dropdown-menu>
         <li><a href="/">Home</a></li>
         <% if(locals.isAuthenticated) { %>
-          <li><a href="/users/:id">My Profile</a></li>
+          <li><a href="/users/<%= user.id %>">My Profile</a></li>
         <li><a href="/drinks/new">Add Drink</a></li>
-        <li><a href="/feed">Drip-feed</a></li>
+        <li><a href="/drinks">Drip-feed</a></li>
           <li><a href="/logout">Logout</a></li>
         <% } else { %>
           <li><a href="/login">Log In</a></li>

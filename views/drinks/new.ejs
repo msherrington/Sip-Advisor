@@ -1,11 +1,24 @@
-<form method="POST" action="/drinks" enctype="multipart/form-data">
+<h1>Add New Drink</h1>
+<form method="POST" action="/drinks/new" enctype="multipart/form-data">
   <div>
-    <label for="filename">Image file</label>
-    <input type="file" name="filename" id="filename">
+    <label for="image">Image</label>
+    <input type="file" name="image" id="image">
   </div>
   <div>
-    <label for="caption">Caption</label>
-    <textarea name="caption" id="caption"></textarea>
+    <label for="name">Drink Name</label>
+    <textarea name="name" id="name"></textarea>
   </div>
-  <button>Add</button>
+  <div>
+    <label for="description">Description</label>
+    <textarea name="description" id="description"></textarea>
+  </div>
+  <%# <div>
+    <label for="location">Location</label>
+    <textarea name="location" id="location"></textarea>
+  </div>%>
+  <div>
+    <label for="otherInfo">Any other information...</label>
+    <textarea name="otherInfo" id="otherInfo"></textarea>
+  </div>
+  <button class="button">Create Post</button>
 </form>

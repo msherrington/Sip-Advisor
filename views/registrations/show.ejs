@@ -1,10 +1,10 @@
 <h1>My Profile</h1>
 <div>
   <h3><%= user.username %></h3>
-  <img src="<%= user.imageSRC %>" alt="<%= user.username %>">
+  <img src="<%= user.ProfileImageSRC %>" alt="<%= user.username %>">
 
   <form method="POST" action="/profile">
     <input type="hidden" name="_method" value="DELETE">
-    <button>Delete Account</button>
+    <button class="button">Delete Account</button>
   </form>
 </div>
