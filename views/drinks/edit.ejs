@@ -1,7 +1,6 @@
 <h1>Edit Drink</h1>
 
 <form method="POST" action="/drinks/<%= drink.id %>" enctype="multipart/form-data">
-  <input type="hidden" name="_method" value="PUT">
   <div>
     <img src="<%= drink.imageSRC %>">
     <label for="image">Change Image</label>

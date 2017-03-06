@@ -6,13 +6,13 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird'); // setting bluebird to be promises library for mongoose
 const session = require('express-session');
 const flash = require('express-flash');
-const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const { port, env, dbURI, sessionSecret } = require('./config/environment');
 const errorHandler = require('./lib/errorHandler');
 const routes = require('./config/routes');
 const customResponses = require('./lib/customResponses');
 const authentication = require('./lib/authentication');
+const methodOverride = require('./lib/methodOverride');
 
 // create an express app
 const app = express();
@@ -30,15 +30,8 @@ mongoose.connect(dbURI);
 
 // set up our middleware
 if (env !== 'test') app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(methodOverride((req) => {
-  if(req.body && typeof req.body === 'object' && '_method' in req.body) {
-    const method = req.body._method;
-    delete req.body._method;
-
-    return method;
-  }
-}));
+app.use(bodyParser.urlencoded({ extended: true })); // this will create req.body for normal forms
+app.use(methodOverride);
 
 // set up our sessions
 app.use(session({

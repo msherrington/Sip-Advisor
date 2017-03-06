@@ -22,11 +22,11 @@ router.route('/drinks')
 
 router.route('/drinks/new')
   .get(secureRoute, drinks.new)
-  .post(secureRoute, upload.single('image'), drinks.create);
+  .post(secureRoute, drinks.create);
 
 router.route('/drinks/:id')
   .get(secureRoute, drinks.show)
-  .put(secureRoute, drinks.update)
+  .post(secureRoute, upload.single('image'), drinks.update)
   .delete(secureRoute, drinks.delete);
 
 router.route('/drinks/:id/edit')
@@ -40,7 +40,7 @@ router.route('/drinks/:id/edit')
 
 router.route('/register')
   .get(registrations.new)
-  .post(registrations.create);
+  .post(upload.single('image'), registrations.create);
 
 router.route('/login')
   .get(sessions.new)

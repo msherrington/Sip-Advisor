@@ -5,16 +5,16 @@ const userSchema = new mongoose.Schema({
   username: { type: String },
   email: { type: String },
   password: { type: String },
-  profileImage: { type: String },
+  image: { type: String },
   bio: { type: String },
   githubId: { type: String }
 });
 
-userSchema.virtual('profileImageSRC')
+userSchema.virtual('imageSRC')
   .get(function getProfileImageSRC(){
-    if(!this.profileImage) return null;
-    if(this.profileImage.match(/^http/)) return this.profileImage;
-    return `https://s3-eu-west-1.amazonaws.com/wdi25-london-project2/${this.profileImage}`;
+    if(!this.image) return null;
+    if(this.image.match(/^http/)) return this.image;
+    return `https://s3-eu-west-1.amazonaws.com/wdi25-london-project2/${this.image}`;
   });
 
 userSchema

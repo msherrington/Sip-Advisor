@@ -1,4 +1,5 @@
 const Drink = require('../models/drink');
+const s3 = require('../lib/s3');
 
 function drinksIndex(req, res) {
   Drink
@@ -57,23 +58,43 @@ function drinksEdit(req, res, next) {
 }
 
 function drinksUpdate(req, res, next) {
+  // add the newly uploaded image filename to req.body
+  // but only if a file was uploaded
+  if(req.file) req.body.image = req.file.key;
+  // clean up req.body, cos multer is a bit chit
+  req.body = Object.assign({}, req.body);
+
   Drink
     .findById(req.params.id)
     .exec()
     .then((drink) => {
       if(!drink) return res.notFound();
 
+      if(req.body.image) {
+        // image has been updated
+        // delete the old image from AWS
+        s3.removeObject({ Key: drink.image }); // WARNING: we are not handling any error here atm
+      }
+
+      // update the record to contain the new data from the form
+      // which would also include the new filename if an image was uploaded
       for(const field in req.body) {
         drink[field] = req.body[field];
       }
 
+      // save the updated record back to the db
       return drink.save();
     })
     .then((drink) => {
       req.flash('success', `${drink.name} has been updated.`);
       res.redirect(`/drinks/${drink.id}`);
     })
-    .catch(next);
+    .catch((err) => {
+      // at this point the image would have been uploaded regardless.. bolox
+      // let's worry about that later
+      if(err.name === 'ValidationError') res.badRequest(`/drinks/${req.params.id}/edit`, err.toString());
+      next(err);
+    });
 }
 
 function drinksDelete(req, res, next) {

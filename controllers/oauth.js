@@ -36,7 +36,7 @@ function github(req, res, next) {
         }
 
         user.githubId = profile.id;
-        user.profileImage = profile.avatar_url;
+        user.image = profile.avatar_url;
         return user.save();
       });
   })
