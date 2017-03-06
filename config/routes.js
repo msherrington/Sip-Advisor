@@ -12,17 +12,19 @@ router.get('/', (req, res) => res.render('statics/index'));
 router.route('/users/:id')
   .get(secureRoute, users.show)
   .put(secureRoute, users.update)
+  // .get(secureRoute, drinks.index)
+  // .get(secureRoute, drinks.show)
   .delete(secureRoute, registrations.delete);
 
 router.route('/users/:id/edit')
   .get(secureRoute, users.edit);
 
 router.route('/drinks')
-  .get(secureRoute, drinks.index);
+  .get(secureRoute, drinks.index)
+  .post(secureRoute, upload.single('image'), drinks.create);
 
 router.route('/drinks/new')
-  .get(secureRoute, drinks.new)
-  .post(secureRoute, drinks.create);
+  .get(secureRoute, drinks.new);
 
 router.route('/drinks/:id')
   .get(secureRoute, drinks.show)

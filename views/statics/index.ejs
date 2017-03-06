@@ -1,13 +1,10 @@
-<h1>SipAdvisor Homepage</h1>
+<h1>Sip<span>Advisor</span></h1>
 
-
-
-<p><b>Use Hotel-app (w05d01) to get user/id working. edit pages, etc.</p>
-
-<p>Coffeeshop or cheeky beers homeworks for edit and delete buttons</p>
-
-<p>Read lesson notes from week and look at integrating Facebook login</p>
-
-<p>Monday: Google Places and google maps integration</b></p>
-
-<img src="http://www.bigskywords.com/uploads/1/2/8/0/12804055/1539892_orig.png" alt="Map">
+<%# <img src="http://www.bigskywords.com/uploads/1/2/8/0/12804055/1539892_orig.png">%>
+<% if (locals.isAuthenticated) { %>
+  <div id="map"></div>
+<% } else { %>
+  <div class="home">
+    <h5>Log in <a href="/login">here</a> to use this site.</h5>
+  </div>
+<% } %>

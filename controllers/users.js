@@ -19,6 +19,7 @@ function usersShow(req, res, next) {
       res.render('users/show', { user });
     })
     .catch(next);
+
 }
 
 function usersEdit(req, res, next) {

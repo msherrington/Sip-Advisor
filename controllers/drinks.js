@@ -4,6 +4,7 @@ const s3 = require('../lib/s3');
 function drinksIndex(req, res) {
   Drink
     .find()
+    .populate('createdBy')
     .exec()
     .then((drinks) => res.render('drinks/index', { drinks }))
     .catch((err) => {
@@ -18,6 +19,7 @@ function drinksNew(req, res) {
 function drinksShow(req, res, next) {
   Drink
     .findById(req.params.id)
+    .populate('createdBy')
     .exec()
     .then((drink) => {
       if(!drink) res.notFound();
@@ -27,10 +29,12 @@ function drinksShow(req, res, next) {
 }
 
 function drinksCreate(req, res, next) {
+  req.body.createdBy = req.user;
+
   if(req.file) req.body.image = req.file.key;
   // For some reason multer's req.body doesn't behave like body-parser's
   req.body = Object.assign({}, req.body);
-
+  console.log(req.body);
   // req.user.image.push(req.body);
 
   Drink
@@ -61,7 +65,7 @@ function drinksUpdate(req, res, next) {
   // add the newly uploaded image filename to req.body
   // but only if a file was uploaded
   if(req.file) req.body.image = req.file.key;
-  // clean up req.body, cos multer is a bit chit
+  // clean up req.body, cos multer is a bit shit
   req.body = Object.assign({}, req.body);
 
   Drink
@@ -70,11 +74,11 @@ function drinksUpdate(req, res, next) {
     .then((drink) => {
       if(!drink) return res.notFound();
 
-      if(req.body.image) {
-        // image has been updated
-        // delete the old image from AWS
-        s3.removeObject({ Key: drink.image }); // WARNING: we are not handling any error here atm
-      }
+      // if(req.body.image) {
+      //   // image has been updated
+      //   // delete the old image from AWS
+      //   s3.removeObject({ Key: drink.image }); // WARNING: we are not handling any error here atm
+      // }
 
       // update the record to contain the new data from the form
       // which would also include the new filename if an image was uploaded

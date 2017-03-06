@@ -4,14 +4,8 @@
   <div class="small-12 medium-6 large-4 columns">
     <img class="thumbnail" src="<%= drink.imageSRC %>" alt="<%= drink.name %>">
     <a href="/drinks/<%= drink.id %>"><h3><%= drink.name %></h3></a>
-    <p><%= drink.description %></p>
-    <p><%= drink.otherInfo %></p>
-    <% if(locals.isAuthenticated) { %>
-      <a href="/drinks/<%= drink.id %>/edit" class="button">Edit</a>
-      <form action="/drinks/<%= drink.id %>" method="POST">
-        <input type="hidden" name="_method" value="DELETE"/>
-        <button class="button">Delete</button>
-      </form>
-    <% } %>
+
+    <p>Posted by: <%= drink.createdBy.username %></p>
+
   </div>
 <% }) %>

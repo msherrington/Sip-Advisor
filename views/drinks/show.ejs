@@ -3,9 +3,10 @@
 <div class="row">
 <img src="<%= drink.imageSRC %>">
 <h3><%= drink.name %></h3>
-<p><%= drink.description %></p>
-<p><%= drink.otherInfo %></p>
-<% if(locals.isAuthenticated) { %>
+<p>Posted by: <%= drink.createdBy.username %></p>
+<p>Description: <%= drink.description %></p>
+<p>Other info: <%= drink.otherInfo %></p>
+<% if(locals.isAuthenticated && drink.ownedBy(user)) { %>
   <a href="/drinks/<%= drink.id %>/edit" class="button">Edit</a>
   <form action="/drinks/<%= drink.id %>" method="POST">
     <input type="hidden" name="_method" value="DELETE"/>

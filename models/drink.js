@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-// const User = require('../models/user');
 
 const commentSchema = new mongoose.Schema({
   content: { type: String, required: true },
@@ -14,11 +13,11 @@ commentSchema.methods.ownedBy = function ownedBy(user) {
 
 const drinkSchema = new mongoose.Schema({
   image: { type: String },
-  name: { type: String, required: true },
-  description: { type: String, required: true },
+  name: { type: String},
+  description: { type: String},
   // location: { type: String, required: true },
   otherInfo: { type: String },
-  // createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   comments: [ commentSchema ]
 });
 
