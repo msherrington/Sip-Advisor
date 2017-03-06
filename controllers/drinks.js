@@ -26,7 +26,7 @@ function drinksShow(req, res, next) {
 }
 
 function drinksCreate(req, res, next) {
-  if(req.file) req.body.filename = req.file.key;
+  if(req.file) req.body.image = req.file.key;
   // For some reason multer's req.body doesn't behave like body-parser's
   req.body = Object.assign({}, req.body);
 

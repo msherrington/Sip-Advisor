@@ -1,17 +1,19 @@
 <h1>Edit Drink</h1>
 
-<form method="POST" action="/drinks/<%= drinks.id %>" enctype="multipart/form-data">
+<form method="POST" action="/drinks/<%= drink.id %>" enctype="multipart/form-data">
+  <input type="hidden" name="_method" value="PUT">
   <div>
-    <img src="<% drink.imageSRC %>"><label for="image">Change Image</label>
+    <img src="<%= drink.imageSRC %>">
+    <label for="image">Change Image</label>
     <input type="file" name="image" id="image">
   </div>
   <div>
     <label for="name">Drink Name</label>
-    <textarea name="name" id="name" value="<%= drink.name %>"></textarea>
+    <textarea name="name" id="name"><%= drink.name %></textarea>
   </div>
   <div>
     <label for="description">Description</label>
-    <textarea name="description" id="description"  value="<%= drink.description %>"></textarea>
+    <textarea name="description" id="description"><%= drink.description %></textarea>
   </div>
   <%# <div>
     <label for="location">Location</label>
@@ -19,7 +21,7 @@
   </div>%>
   <div>
     <label for="otherInfo">Any other information...</label>
-    <textarea name="otherInfo" id="otherInfo" value="<%= drink.otherInfo %>"></textarea>
+    <textarea name="otherInfo" id="otherInfo"><%= drink.otherInfo %></textarea>
   </div>
   <button class="button">Update</button>
 </form>

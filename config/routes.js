@@ -32,6 +32,12 @@ router.route('/drinks/:id')
 router.route('/drinks/:id/edit')
   .get(secureRoute, drinks.edit);
 
+// router.route('/drinks/:id/comments')
+//   .post(secureRoute, drinks.createComment);
+//
+// router.route('/drinks/:id/comments/:commentId')
+//   .delete(secureRoute, drinks.deleteComment);
+
 router.route('/register')
   .get(registrations.new)
   .post(registrations.create);
