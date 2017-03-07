@@ -11,7 +11,7 @@ $(function () {
   function initMap() {
     // const latLng = { lat: -33.43774451396826, lng: -70.6505012512207 };
     map = new google.maps.Map($map.get(0), {
-      zoom: 13,
+      zoom: 12,
       // center: latLng,
       scrollwheel: false,
       styles: mapStyles
@@ -34,7 +34,7 @@ $(function () {
       };
 
       infoWindow.setPosition(pos);
-      infoWindow.setContent('You are here.');
+      infoWindow.setContent('Location found.');
       map.setCenter(pos);
     }, function () {
       handleLocationError(true, infoWindow, map.getCenter());

@@ -19,7 +19,7 @@ function drinksNew(req, res) {
 function drinksShow(req, res, next) {
   Drink
     .findById(req.params.id)
-    .populate('createdBy')
+    .populate('createdBy comments.createdBy')
     .exec()
     .then((drink) => {
       if(!drink) res.notFound();
@@ -116,6 +116,39 @@ function drinksDelete(req, res, next) {
     .catch(next);
 }
 
+function createCommentRoute(req, res, next) {
+
+  req.body.createdBy = req.user;
+
+  Drink
+    .findById(req.params.id)
+    .exec()
+    .then((drink) => {
+      if(!drink) return res.notFound();
+
+      drink.comments.push(req.body); // create an embedded record
+      return drink.save();
+    })
+    .then((drink) => res.redirect(`/drinks/${drink.id}`))
+    .catch(next);
+}
+
+function deleteCommentRoute(req, res, next) {
+  Drink
+    .findById(req.params.id)
+    .exec()
+    .then((drink) => {
+      if(!drink) return res.notFound();
+      // get the embedded record by it's id
+      const comment = drink.comments.id(req.params.commentId);
+      comment.remove();
+
+      return drink.save();
+    })
+    .then((drink) => res.redirect(`/drinks/${drink.id}`))
+    .catch(next);
+}
+
 module.exports = {
   index: drinksIndex,
   new: drinksNew,
@@ -123,5 +156,7 @@ module.exports = {
   create: drinksCreate,
   edit: drinksEdit,
   update: drinksUpdate,
-  delete: drinksDelete
+  delete: drinksDelete,
+  createComment: createCommentRoute,
+  deleteComment: deleteCommentRoute
 };

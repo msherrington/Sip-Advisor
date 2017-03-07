@@ -7,10 +7,35 @@
 <p>Description: <%= drink.description %></p>
 <p>Other info: <%= drink.otherInfo %></p>
 <% if(locals.isAuthenticated && drink.ownedBy(user)) { %>
-  <a href="/drinks/<%= drink.id %>/edit" class="button">Edit</a>
+  <a href="/drinks/<%= drink.id %>/edit" class="button">Edit Drink</a>
   <form action="/drinks/<%= drink.id %>" method="POST">
     <input type="hidden" name="_method" value="DELETE"/>
-    <button class="button">Delete</button>
+    <button class="button">Delete Drink</button>
   </form>
+<% } %>
+
+<section>
+  <h4>Comments</h4>
+  <% drink.comments.forEach((comment) => { %>
+    <p><%= comment.content %></p>
+    <small>Comment posted by: <%= comment.createdBy.username %></small>
+
+    <% if(locals.isAuthenticated && comment.ownedBy(user)) { %>
+      <form method="POST" action="/drinks/<%= drink.id %>/comments/<%= comment.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="button">Delete comment</button>
+      </form>
+    <% } %>
+  <% }) %>
+</section>
+
+<% if(locals.isAuthenticated) { %>
+  <section>
+    <h4>Leave a comment</h4>
+    <form method="POST" action="/drinks/<%= drink.id %>/comments">
+      <textarea name="content" id="content" placeholder="Comment"></textarea>
+      <button class="button">Post comment</button>
+    </form>
+  </section>
 <% } %>
 </div>
