@@ -7,13 +7,15 @@ const drinks = require('../controllers/drinks');
 const oauth = require('../controllers/oauth');
 const upload = require('../lib/upload');
 
-router.get('/', (req, res) => res.render('statics/index'));
+// router.get('/', (req, res) => res.render('statics/index'));
+
+router.route('/')
+  .get(drinks.home);
 
 router.route('/users/:id')
   .get(secureRoute, users.show)
+  .get(secureRoute, drinks.index)
   .put(secureRoute, users.update)
-  // .get(secureRoute, drinks.index)
-  // .get(secureRoute, drinks.show)
   .delete(secureRoute, registrations.delete);
 
 router.route('/users/:id/edit')

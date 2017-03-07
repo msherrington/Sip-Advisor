@@ -1,8 +1,7 @@
 <h1>Sip<span>Advisor</span></h1>
 
-<%# <img src="http://www.bigskywords.com/uploads/1/2/8/0/12804055/1539892_orig.png">%>
 <% if (locals.isAuthenticated) { %>
-  <div id="map"></div>
+  <div id="map" data-drinks="<%= JSON.stringify(drinks) %>"></div>
 <% } else { %>
   <div class="home">
     <h5>Log in <a href="/login">here</a> to use this site.</h5>

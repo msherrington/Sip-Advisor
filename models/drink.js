@@ -12,10 +12,13 @@ commentSchema.methods.ownedBy = function ownedBy(user) {
 };
 
 const drinkSchema = new mongoose.Schema({
-  image: { type: String },
-  name: { type: String},
-  description: { type: String},
+  image: { type: String, required: true },
+  name: { type: String, required: true },
+  description: { type: String, required: true },
   // location: { type: String, required: true },
+  location: { type: String, required: true  },
+  longitude: { type: Number },
+  latitude: { type: Number },
   otherInfo: { type: String },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   comments: [ commentSchema ]

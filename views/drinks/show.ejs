@@ -6,6 +6,8 @@
 <p>Posted by: <%= drink.createdBy.username %></p>
 <p>Description: <%= drink.description %></p>
 <p>Other info: <%= drink.otherInfo %></p>
+<p>Location: <%= drink.location %></p>
+<p><a href="/">Go to map</a></p>
 <% if(locals.isAuthenticated && drink.ownedBy(user)) { %>
   <a href="/drinks/<%= drink.id %>/edit" class="button">Edit Drink</a>
   <form action="/drinks/<%= drink.id %>" method="POST">

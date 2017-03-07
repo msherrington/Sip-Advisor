@@ -14,10 +14,12 @@
     <label for="description">Description</label>
     <textarea name="description" id="description"><%= drink.description %></textarea>
   </div>
-  <%# <div>
+  <div>
     <label for="location">Location</label>
-    <textarea name="location" id="location"></textarea>
-  </div>%>
+    <input class="controls" id="location" name="location" value="<%= drink.location %>" style="width: 100%">
+    <input type="hidden" name="latitude">
+    <input type="hidden" name="longitude">
+  </div>
   <div>
     <label for="otherInfo">Any other information...</label>
     <textarea name="otherInfo" id="otherInfo"><%= drink.otherInfo %></textarea>

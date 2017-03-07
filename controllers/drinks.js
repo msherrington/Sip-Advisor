@@ -1,6 +1,15 @@
 const Drink = require('../models/drink');
 const s3 = require('../lib/s3');
 
+function homeRoute(req, res, next) {
+  Drink
+    .find()
+    .populate('createdBy')
+    .exec()
+    .then((drinks) => res.render('statics/index', { drinks }))
+    .catch(next);
+}
+
 function drinksIndex(req, res) {
   Drink
     .find()
@@ -34,7 +43,7 @@ function drinksCreate(req, res, next) {
   if(req.file) req.body.image = req.file.key;
   // For some reason multer's req.body doesn't behave like body-parser's
   req.body = Object.assign({}, req.body);
-  console.log(req.body);
+
   // req.user.image.push(req.body);
 
   Drink
@@ -74,11 +83,11 @@ function drinksUpdate(req, res, next) {
     .then((drink) => {
       if(!drink) return res.notFound();
 
-      // if(req.body.image) {
-      //   // image has been updated
-      //   // delete the old image from AWS
-      //   s3.removeObject({ Key: drink.image }); // WARNING: we are not handling any error here atm
-      // }
+      if(req.body.image) {
+        // image has been updated
+        // delete the old image from AWS
+        s3.removeObject({ Key: drink.image }); // WARNING: we are not handling any error here atm
+      }
 
       // update the record to contain the new data from the form
       // which would also include the new filename if an image was uploaded
@@ -150,6 +159,7 @@ function deleteCommentRoute(req, res, next) {
 }
 
 module.exports = {
+  home: homeRoute,
   index: drinksIndex,
   new: drinksNew,
   show: drinksShow,
