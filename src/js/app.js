@@ -44,7 +44,6 @@ $(() => {
     const drinkName = location.name;
     const drinkImage = location.image;
     const drinkDescription = location.description;
-    const drinkInfo = location.otherInfo;
     const drinkLocation = location.location;
     const drinkId = location._id;
 
@@ -106,6 +105,6 @@ $(() => {
     });
   }
 
-  google.maps.event.addDomListener(window, 'load', initialize);
+  google.maps.event.addDomListener($map, 'load', initialize);
 
 });

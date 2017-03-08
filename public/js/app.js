@@ -46,7 +46,6 @@ $(function () {
     var drinkName = location.name;
     var drinkImage = location.image;
     var drinkDescription = location.description;
-    var drinkInfo = location.otherInfo;
     var drinkLocation = location.location;
     var drinkId = location._id;
 
@@ -98,5 +97,5 @@ $(function () {
     });
   }
 
-  google.maps.event.addDomListener(window, 'load', initialize);
+  google.maps.event.addDomListener($map, 'load', initialize);
 });
