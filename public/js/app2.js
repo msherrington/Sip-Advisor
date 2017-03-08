@@ -18,7 +18,6 @@ $(function () {
       scrollwheel: false,
       styles: mapStyles
     });
-
     // getBars();
 
     // const marker = new google.maps.Marker({

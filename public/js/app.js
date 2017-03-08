@@ -18,12 +18,14 @@ $(function () {
     var drinks = $map.data('drinks');
     $.each(drinks, function (index, location) {
       addMarker(location);
+      // console.log(location);
     });
   }
 
   function addMarker(location) {
     var latLng = { lat: location.latitude, lng: location.longitude };
-    console.log(latLng);
+
+    console.log(location);
     marker = new google.maps.Marker({
       position: latLng,
       map: map,
@@ -31,32 +33,32 @@ $(function () {
       icon: '../assets/images/marker.png'
     });
     marker.setMap(map);
-    // marker.addListener('click', () => {
-    //   markerClick(marker, location);
-    // });
+    marker.addListener('click', function () {
+      markerClick(marker, location);
+    });
   }
 
-  // function markerClick(marker, location) {
-  //   // If there is an open infowindow on the map, close it
-  //   if(infowindow) infowindow.close();
-  //
-  //   // Locate the data that we need from the individual bike object
-  //   const locationName = location.name;
-  //   const noOfBikes = location.additionalProperties.find(obj => obj.key === 'NbBikes').value;
-  //   const noOfSpaces = location.additionalProperties.find(obj => obj.key === 'NbEmptyDocks').value;
-  //
-  //   // Update the infowindow variable to be a new Google InfoWindow
-  //   infowindow = new google.maps.InfoWindow({
-  //     content: `
-  //     <div class="infowindow">
-  //       <h3>${locationName}</h3>
-  //       <p>Available bikes: <strong>${noOfBikes}</strong></p>
-  //       <p>Free spaces: <strong>${noOfSpaces}</strong></p>
-  //     </div>`
-  //   });
-  //   // Finally, open the new InfoWindow
-  //   infowindow.open(map, marker);
-  // }
+  function markerClick(marker, location) {
+    // If there is an open infowindow on the map, close it
+    if (infowindow) infowindow.close();
+
+    // Locate the data that we need from the individual bike object
+    var drinkName = location.name;
+    var drinkImage = location.image;
+    var drinkDescription = location.description;
+    var drinkInfo = location.otherInfo;
+    var drinkLocation = location.location;
+    var drinkId = location._id;
+
+    // Update the infowindow variable to be a new Google InfoWindow
+    infowindow = new google.maps.InfoWindow({
+      content: '\n      <div class="infowindow">\n        <img src="https://s3-eu-west-1.amazonaws.com/wdi25-london-project2/' + drinkImage + '">\n        <h1>' + drinkName + '</h1>\n        <p><strong>' + drinkDescription + '</strong></p>\n        <p>' + drinkLocation + '</p>\n        <p><a href="/drinks/' + drinkId + '">View this post</a></p>\n      </div>',
+      maxWidth: 200
+      // position: location
+    });
+    // Finally, open the new InfoWindow
+    infowindow.open(map, marker);
+  }
 
   var infoWindow = new google.maps.InfoWindow({ map: map });
 
