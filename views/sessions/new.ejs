@@ -3,14 +3,15 @@
 <form method="POST" action="/login">
   <div>
     <label for="email">Email</label>
-    <input type="text" name="email" id="email" required>
+    <input type="text" name="email" id="email">
   </div>
   <div>
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
+    <input type="password" name="password" id="password">
   </div>
 
   <button class="button">Login</button>
 </form>
 
 <a class="button" href="<%= oauth.github.getLoginURL() %>">Login with GitHub</a>
+<a class="button" href="<%= oauth.facebook.getLoginURL() %>">Login with BookFace</a>

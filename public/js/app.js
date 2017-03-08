@@ -7,14 +7,20 @@ $(function () {
   var map = null;
   var infowindow = null;
   if ($map.length) initMap();
-  var marker = null;
 
   function initMap() {
+    // const latLng = { lat: 51.515113, lng: -0.072051 };
     map = new google.maps.Map($map.get(0), {
-      zoom: 13,
+      zoom: 14,
       scrollwheel: false,
+      // center: latLng,
       styles: mapStyles
     });
+
+    map.addListener('click', function () {
+      if (infowindow) infowindow.close();
+    });
+
     var drinks = $map.data('drinks');
     $.each(drinks, function (index, location) {
       addMarker(location);
@@ -25,8 +31,8 @@ $(function () {
   function addMarker(location) {
     var latLng = { lat: location.latitude, lng: location.longitude };
 
-    console.log(location);
-    marker = new google.maps.Marker({
+    // console.log(location);
+    var marker = new google.maps.Marker({
       position: latLng,
       map: map,
       animation: google.maps.Animation.DROP,
@@ -53,26 +59,26 @@ $(function () {
     infowindow = new google.maps.InfoWindow({
       content: '\n      <div class="infowindow">\n        <img src="https://s3-eu-west-1.amazonaws.com/wdi25-london-project2/' + drinkImage + '">\n        <h1>' + drinkName + '</h1>\n        <p><strong>' + drinkDescription + '</strong></p>\n        <p>' + drinkLocation + '</p>\n        <p><a href="/drinks/' + drinkId + '">View this post</a></p>\n      </div>',
       maxWidth: 200
-      // position: location
+      // position: marker
     });
     // Finally, open the new InfoWindow
     infowindow.open(map, marker);
   }
 
-  var infoWindow = new google.maps.InfoWindow({ map: map });
-
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
+    var _infoWindow = new google.maps.InfoWindow();
     navigator.geolocation.getCurrentPosition(function (position) {
       var pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('You are here!');
+      _infoWindow.setPosition(pos);
+      _infoWindow.setContent('You are here!');
+      _infoWindow.open(map);
       map.setCenter(pos);
     }, function () {
-      handleLocationError(true, infoWindow, map.getCenter());
+      handleLocationError(true, _infoWindow, map.getCenter());
     });
   } else {
     // Browser doesn't support Geolocation
@@ -97,5 +103,5 @@ $(function () {
     });
   }
 
-  google.maps.event.addDomListener($map, 'load', initialize);
+  google.maps.event.addDomListener(window, 'load', initialize);
 });

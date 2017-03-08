@@ -56,6 +56,9 @@ router.route('/logout')
 router.route('/oauth/github')
   .get(oauth.github);
 
+router.route('/oauth/facebook')
+  .get(oauth.facebook);
+
 router.all('*', (req, res) => res.notFound());
 
 module.exports = router;

@@ -1,11 +1,11 @@
 <h1><%= user.username %>'s Profile</h1>
 
 <img src="<%= user.imageSRC %>" alt="<%= user.imageSRC %>"><br>
-<%# <a href="/user/images/new">Add image</a>%>
-<h2>About Me</h2>
-<p><%= user.description %></p>
 
-<% if(locals.isAuthenticated) { %>
+<% if(locals.isAuthenticated && !user.githubId && !user.facebookId) { %>
+  <h2>About Me</h2>
+  <p><%= user.description %></p>
+
     <a href="/users/<%= user.id %>/edit" class="button">Edit Profile</a>
     <form action="/users/<%= user.id %>" method="POST">
       <input type="hidden" name="_method" value="DELETE"/>

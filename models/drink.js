@@ -15,7 +15,6 @@ const drinkSchema = new mongoose.Schema({
   image: { type: String, required: true },
   name: { type: String, required: true },
   description: { type: String, required: true },
-  // location: { type: String, required: true },
   location: { type: String, required: true  },
   longitude: { type: Number },
   latitude: { type: Number },

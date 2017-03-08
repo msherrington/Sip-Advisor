@@ -5,14 +5,20 @@ $(() => {
   let map = null;
   let infowindow = null;
   if ($map.length) initMap();
-  let marker = null;
 
   function initMap() {
+    // const latLng = { lat: 51.515113, lng: -0.072051 };
     map = new google.maps.Map($map.get(0), {
-      zoom: 13,
+      zoom: 14,
       scrollwheel: false,
+      // center: latLng,
       styles: mapStyles
     });
+
+    map.addListener('click', () => {
+      if(infowindow) infowindow.close();
+    });
+
     const drinks = $map.data('drinks');
     $.each(drinks, (index, location) => {
       addMarker(location);
@@ -23,8 +29,8 @@ $(() => {
   function addMarker(location) {
     const latLng = { lat: location.latitude, lng: location.longitude };
 
-    console.log(location);
-    marker = new google.maps.Marker({
+    // console.log(location);
+    const marker = new google.maps.Marker({
       position: latLng,
       map,
       animation: google.maps.Animation.DROP,
@@ -58,16 +64,15 @@ $(() => {
         <p><a href="/drinks/${drinkId}">View this post</a></p>
       </div>`,
       maxWidth: 200
-      // position: location
+      // position: marker
     });
     // Finally, open the new InfoWindow
     infowindow.open(map, marker);
   }
 
-  let infoWindow = new google.maps.InfoWindow({ map });
-
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
+    const infoWindow = new google.maps.InfoWindow();
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
         lat: position.coords.latitude,
@@ -75,6 +80,7 @@ $(() => {
       };
       infoWindow.setPosition(pos);
       infoWindow.setContent('You are here!');
+      infoWindow.open(map);
       map.setCenter(pos);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
@@ -105,6 +111,6 @@ $(() => {
     });
   }
 
-  google.maps.event.addDomListener($map, 'load', initialize);
+  google.maps.event.addDomListener(window, 'load', initialize);
 
 });

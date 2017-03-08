@@ -2,12 +2,13 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: true },
+  username: { type: String },
   email: { type: String },
-  password: { type: String, required: true },
-  image: { type: String },
+  password: { type: String },
+  image: { type: String  },
   bio: { type: String },
-  githubId: { type: String }
+  githubId: { type: String },
+  facebookId: { type: String }
 });
 
 userSchema.virtual('imageSRC')
@@ -25,7 +26,7 @@ userSchema
 
 // lifecycle hook - mongoose middleware
 userSchema.pre('validate', function checkPassword(next) {
-  if(!this.password && !this.githubId) {
+  if(!this.password && !this.githubId && !this.facebookId) {
     this.invalidate('password', 'required');
   }
   if(this.isModified('password') && this._passwordConfirmation !== this.password) this.invalidate('passwordConfirmation', 'does not match');
