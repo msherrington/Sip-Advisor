@@ -5,12 +5,67 @@ body {
   }
 }
 
+span {
+  color: green;
+}
+
+.top-bar {
+  background-color: white;
+  ul {
+    background-color: #b7d187;
+    border-radius: 5px;
+    a {
+      border-radius: 5px;
+      color: black;
+    }
+    a:hover {
+      background-color: #037a25;
+      color: white;
+    }
+  }
+}
+
+// Default global padding
+$global-padding: 1rem;
+// Global value used for all elements that have a border radius.
+$global-radius: 3px;
+// Setting the form padding
+$form-padding: $global-padding;
+// Setting the form border radius
+$form-radius: $global-radius;
+
+.log-in-form {
+  padding: $form-padding;
+  border-radius: $form-radius;
+}
+
 textarea {
   border-radius: 5px;
 }
 
-span {
-  color: green;
+.loginBtn {
+    width: 50%;
+    display: block;
+    margin-left: 25%;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.row input {
+  border-radius: 5px;
+  &.controls {
+    height: 2.5em;
+    box-shadow: 0;
+    margin-bottom: 10px;
+  }
+}
+
+label {
+  font-size: 18px;
+  text-align: left;
+  &.error {
+    color: red;
+  }
 }
 
 #map {
@@ -40,89 +95,20 @@ img.thumbnail {
 .button {
   border-radius: 5px;
   width: 50%;
-
-  // background-color: #04962e;
-  // background-color: #188F22;
-  background-color: #02601d;
+  font-size: 16px;
+  background-color: #0e7817;
   &:hover {
-    // background-color: green;
-    background-color: #0e7817;
     font-weight: bold;
-    // background-color: #01a831;
+    background-color: #02601d;
   }
   &.delete {
     background-color: #DC143C;
     &:hover {
       background-color: #D00000;
-      // font-weight: bold;
     }
   }
 }
-
-.loginBtn {
-    width: 50%;
-    display: block;
-    margin-left: 25%;
-    margin-bottom: 20px;
-    margin-top: 10px;
-}
-
-label {
-  font-size: 18px;
-  text-align: left;
-  &.error {
-    color: red;
-  }
-}
-
 
 .drinkImage {
   height: 50vh;
-}
-
-
-// Default global padding
-$global-padding: 1rem;
-// Global value used for all elements that have a border radius.
-$global-radius: 3px;
-
-// Setting the form padding
-$form-padding: $global-padding;
-// Setting the form border radius
-$form-radius: $global-radius;
-
-.log-in-form {
-  padding: $form-padding;
-  border-radius: $form-radius;
-}
-
-.top-bar {
-  // background-color: #d1e5ac;
-  background-color: white;
-  ul {
-    // background-color: #c7dae8;
-    background-color: #b7d187;
-    border-radius: 5px;
-    a {
-      border-radius: 5px;
-      // color: green;
-      color: black;
-      // font-weight: bold;
-      // font-family: 'Montserrat', sans-serif;
-    }
-    a:hover {
-      background-color: #037a25;
-      // background-color: #2e6826;
-      color: white;
-    }
-  }
-}
-
-.row input {
-  border-radius: 5px;
-  &.controls {
-    height: 2.5em;
-    box-shadow: 0;
-    margin-bottom: 10px;
-  }
 }

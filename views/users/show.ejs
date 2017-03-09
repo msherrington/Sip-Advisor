@@ -1,24 +1,25 @@
+<h1><img src="../assets/images/marker.png">Sip<span>Advisor</span></h1>
 <div class="row">
   <div class="medium-8 medium-centered large-6 large-centered columns">
     <h2><%= user.username %>'s Profile</h2>
 
-<img class="profileImage" src="<%= user.imageSRC %>" alt="<%= user.username %>"><br>
-<br>
-<% if(locals.isAuthenticated && !user.githubId && !user.facebookId && (locals.loggedInUser.id === user.id)) { %>
-  <h3>About Me</h3>
-    <% if(user.bio) { %>
-      <p><%= user.bio %></p>
-    <% } else { %>
-      <p>No bio added for this user yet</p>
-    <% } %>
-    <a href="/users/<%= user.id %>/edit" class="button">Edit Profile</a>
-    <form action="/users/<%= user.id %>" method="POST">
-      <input type="hidden" name="_method" value="DELETE"/>
-      <button class="button delete">Delete Profile</button>
-    </form>
-  <% } %>
-</div>
-</div>
+    <img class="profileImage" src="<%= user.imageSRC %>" alt="<%= user.username %>"><br>
+    <br>
+    <% if(locals.isAuthenticated && !user.githubId && !user.facebookId && (locals.loggedInUser.id === user.id)) { %>
+      <h3>About Me</h3>
+        <% if(user.bio) { %>
+          <p><%= user.bio %></p>
+        <% } else { %>
+          <p>No bio added for this user yet</p>
+        <% } %>
+        <a href="/users/<%= user.id %>/edit" class="button">Edit Profile</a>
+        <form action="/users/<%= user.id %>" method="POST">
+          <input type="hidden" name="_method" value="DELETE"/>
+          <button class="button delete">Delete Profile</button>
+        </form>
+      <% } %>
+    </div>
+  </div>
 <hr>
 <h2><%= user.username %>'s posts</h2>
 

@@ -1,41 +1,24 @@
+<h1><img src="../../assets/images/marker.png">Sip<span>Advisor</span></h1>
 <h4>Edit Profile</h4>
 <div class="row">
   <div class="medium-8 medium-centered large-6 large-centered columns">
-  <form method="POST" action="/users/<%= user.id %>">
-    <input type="hidden" name="_method" value="PUT">
+    <form method="POST" action="/users/<%= user.id %>">
+      <input type="hidden" name="_method" value="PUT">
 
-    <div>
-      <img class="profileImage" src="<%= user.imageSRC %>" alt="Profile Image">
-      <%# <label for="image">Profile Image</label>
-      <input type="file" name="image" id="image">%>
-    <%# </div>
+      <div>
+        <img class="profileImage" src="<%= user.imageSRC %>" alt="Profile Image">
 
-    <div>%>
-      <label for="username">Username</label>
-      <input type="text" name="username" id="username" placeholder="Username" value="<%= user.username %>" required>
-    <%# </div>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" placeholder="Username" value="<%= user.username %>" required>
 
-    <div>%>
-      <label for="email">Email</label>
-      <input type="text" name="email" id="email" placeholder="Email" value="<%= user.email %>" required>
-    <%# </div>%>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" placeholder="Email" value="<%= user.email %>" required>
 
-    <%# <div>
-      <label for="password">New Password</label>
-      <input type="password" name="password" id="password">
-    </div>
+        <label for="bio">About Me</label>
+        <textarea name="bio" maxlength="255" placeholder="Something about you..."><%= user.bio %></textarea>
+      </div>
 
-    <div>
-      <label for="passwordConfirmation">Password Confirmation</label>
-      <input type="password" name="passwordConfirmation" id="passwordConfirmation">
-    </div>%>
-
-    <%# <div>%>
-      <label for="bio">About Me</label>
-      <textarea name="bio" maxlength="255" placeholder="Something about you..."><%= user.bio %></textarea>
-    </div>
-
-    <button class="button">Update Profile</button>
-  </form>
-</div>
+      <button class="button">Update Profile</button>
+    </form>
+  </div>
 </div>
