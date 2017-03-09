@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const Drink = require('../models/drink');
+
 
 function usersIndex(req, res) {
   User
@@ -16,10 +18,12 @@ function usersShow(req, res, next) {
     .exec()
     .then((user) => {
       if(!user) res.notFound();
-      res.render('users/show', { user });
-    })
+      return Drink.find({createdBy: user.id})
+      .then((drinks) => {
+        res.render('users/show', { user, drinks });
+      })
     .catch(next);
-
+    });
 }
 
 function usersEdit(req, res, next) {

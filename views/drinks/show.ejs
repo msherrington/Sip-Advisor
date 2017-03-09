@@ -3,7 +3,7 @@
 <div class="row">
 <img src="<%= drink.imageSRC %>">
 <h3><%= drink.name %></h3>
-<p>Posted by: <%= drink.createdBy.username %></p>
+<p>Posted by: <a href="/users/<%= drink.createdBy.id %>"><%= drink.createdBy.username %></a></p>
 <p>Description: <%= drink.description %></p>
 <p>Other info: <%= drink.otherInfo %></p>
 <p>Location: <%= drink.location %></p>
@@ -20,7 +20,7 @@
   <h4>Comments</h4>
   <% drink.comments.forEach((comment) => { %>
     <p><%= comment.content %></p>
-    <small>Comment posted by: <%= comment.createdBy.username %></small>
+    <small>Comment posted by: <a href="/users/<%= comment.createdBy.id %>"><%= comment.createdBy.username %></a></small>
 
     <% if(locals.isAuthenticated && comment.ownedBy(user)) { %>
       <form method="POST" action="/drinks/<%= drink.id %>/comments/<%= comment.id %>">

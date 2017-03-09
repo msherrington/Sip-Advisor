@@ -1,5 +1,8 @@
-h1 {
-  font-family: 'Montserrat', sans-serif;
+body {
+  text-align: center;
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+  }
 }
 
 span {
@@ -19,4 +22,22 @@ span {
     height: 100px;
     width: 100px;
   }
+}
+.home {
+  .thumbnail {
+    box-shadow: none;
+  }
+}
+.profileImage {
+  height: 150px;
+  width: 150px;
+}
+
+.button {
+  border-radius: 5px;
+}
+
+
+.loginBtn {
+    width: 25%;
 }

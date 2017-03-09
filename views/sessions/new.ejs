@@ -1,5 +1,6 @@
-<h1>Login</h1>
-
+<h1><img src="../assets/images/marker.png">Sip<span>Advisor</span></h1>
+<h4>Login</h4>
+<br>
 <form method="POST" action="/login">
   <div>
     <label for="email">Email</label>
@@ -12,6 +13,6 @@
 
   <button class="button">Login</button>
 </form>
-
-<a class="button" href="<%= oauth.github.getLoginURL() %>">Login with GitHub</a>
-<a class="button" href="<%= oauth.facebook.getLoginURL() %>">Login with BookFace</a>
+<br>
+<a href="<%= oauth.github.getLoginURL() %>"><img class="loginBtn" src="../assets/images/github.png"></a>
+<a href="<%= oauth.facebook.getLoginURL() %>"><img class="loginBtn" src="../assets/images/facebook.png"></a>
