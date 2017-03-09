@@ -3,23 +3,23 @@
 <form method="POST" action="/register" enctype="multipart/form-data">
   <div>
     <label for="username">Username</label>
-    <input type="text" name="username" id="username">
+    <input type="text" name="username" id="username" placeholder="Username" required>
   </div>
   <div>
     <label for="email">Email</label>
-    <input type="email" name="email" id="email">
+    <input type="email" name="email" id="email" placeholder="Email" required>
   </div>
   <div>
     <label for="image">Image</label>
-    <input type="file" name="image" id="image">
+    <input type="file" name="image" id="image" required>
   </div>
   <div>
     <label for="password">Password</label>
-    <input type="password" name="password" id="password">
+    <input type="password" name="password" id="password" placeholder="Password" required>
   </div>
   <div>
     <label for="passwordConfirmation">Password Confirmation</label>
-    <input type="password" name="passwordConfirmation" id="passwordConfirmation">
+    <input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Confirm Password" required>
   </div>
 
   <button class="button">Register</button>

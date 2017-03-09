@@ -13,7 +13,7 @@ function sessionsCreate(req, res, next) {
         return res.unauthorized('/login', 'Unknown credentials');
       }
 
-      req.session.userId = user.id; // put the user ID on the session
+      req.session.userId = user.id; // puts the user ID on the session
       req.session.isAuthenticated = true;
 
       req.user = user;

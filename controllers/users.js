@@ -57,26 +57,9 @@ function usersUpdate(req, res, next) {
     .catch(next);
 }
 
-// function usersDelete(req, res, next) {
-//   User
-//     .findById(req.params.id)
-//     .exec()
-//     .then((user) => {
-//       if(!user) res.notFound();
-//       return user.remove();
-//     })
-//     .then((user) => {
-//       req.flash('success', `${user.name} has been deleted.`);
-//       res.redirect('/users');
-//     })
-//     .catch(next);
-// }
-
 module.exports = {
   index: usersIndex,
   show: usersShow,
   edit: usersEdit,
   update: usersUpdate
-  // delete: usersDelete
-
 };

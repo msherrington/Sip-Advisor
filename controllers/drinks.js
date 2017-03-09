@@ -38,13 +38,14 @@ function drinksShow(req, res, next) {
 }
 
 function drinksCreate(req, res, next) {
+  // Assign user to req.body (as post creator)
   req.body.createdBy = req.user;
-
+  // If a file is uploaded, add the image filename to req.body
   if(req.file) req.body.image = req.file.key;
-  // For some reason multer's req.body doesn't behave like body-parser's
+
   req.body = Object.assign({}, req.body);
 
-  // req.user.image.push(req.body);
+
 
   Drink
     .create(req.body)

@@ -91,7 +91,7 @@ $(() => {
       handleLocationError(true, locationMarker, map.getCenter());
     });
   } else {
-    // Browser doesn't support Geolocation
+    // If browser doesn't support Geolocation
     handleLocationError(false, map.getCenter());
   }
   function handleLocationError(browserHasGeolocation, locationMarker, pos) {
@@ -103,20 +103,23 @@ $(() => {
 
 
   function initialize() {
+    // Variables for Google Places autocomplete search box
     const input = document.getElementById('location');
     const autocomplete = new google.maps.places.Autocomplete(input);
 
+    // Event listener for Google autocomplete box
     google.maps.event.addListener(autocomplete, 'place_changed', () => {
       const place = autocomplete.getPlace();
-      console.log(place);
+      // Variables for storing location's lat/long
       const lat = place.geometry.location.lat();
       const lng = place.geometry.location.lng();
+      // Push location's lat/long from hidden inputs to variables
       $('input[name="latitude"]').val(lat);
       $('input[name="longitude"]').val(lng);
     });
   }
 
-  // event listener for
+  // Listening for window load to start Google Places search
   google.maps.event.addDomListener(window, 'load', initialize);
 
 });

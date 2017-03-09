@@ -7,8 +7,6 @@ const drinks = require('../controllers/drinks');
 const oauth = require('../controllers/oauth');
 const upload = require('../lib/upload');
 
-// router.get('/', (req, res) => res.render('statics/index'));
-
 router.route('/')
   .get(drinks.home);
 

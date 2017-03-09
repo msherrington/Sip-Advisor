@@ -1,4 +1,4 @@
-// require our packages
+// Require packages
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const morgan = require('morgan');
@@ -14,42 +14,42 @@ const customResponses = require('./lib/customResponses');
 const authentication = require('./lib/authentication');
 const methodOverride = require('./lib/methodOverride');
 
-// create an express app
+// Create an express app
 const app = express();
 
-// set up our template engine
+// Set up template engine
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
 app.use(expressLayouts);
 
-// set up our static files
+// Set up static files
 app.use(express.static(`${__dirname}/public`)); //checks public folder before looking at routes
 
-// connect to our database
+// Connect to database
 mongoose.connect(dbURI);
 
-// set up our middleware
+// Set up middleware
 if (env !== 'test') app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true })); // this will create req.body for normal forms
 app.use(methodOverride);
 
-// set up our sessions
+// Set up sessions
 app.use(session({
   secret: sessionSecret,
   resave: false,
   saveUninitialized: false
 }));
 
-// set up flash messages AFTER sessions
+// Set up flash messages AFTER sessions
 app.use(flash());
 
-// set up custom middleware
+// Set up custom middleware
 app.use(customResponses);
 app.use(authentication);
-//set up our routes - just before our error handler
-app.use(routes);
 
-//set up our error handler - our LAST piece of middleware
+// Set up routes (penultimate)
+app.use(routes);
+// Set up error handler (final piece of middleware)
 app.use(errorHandler);
 
 app.listen(port, () => console.log(`Express is listening to port ${port}`));

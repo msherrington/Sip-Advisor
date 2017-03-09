@@ -2,25 +2,26 @@
 <form method="POST" action="/drinks" enctype="multipart/form-data">
   <div>
     <label for="image">Image</label>
-    <input type="file" name="image" id="image">
+    <input type="file" name="image" id="image" required>
   </div>
   <div>
     <label for="name">Drink Name</label>
-    <textarea name="name" id="name"></textarea>
+    <textarea name="name" id="name" placeholder="e.g. Sangria" required></textarea>
   </div>
   <div>
     <label for="description">Description</label>
-    <textarea name="description" id="description"></textarea>
+    <textarea name="description" id="description" placeholder="What is it?" required></textarea>
   </div>
   <div>
     <label for="location">Location</label>
-    <input class="controls" id="location" name="location" placeholder="Google Places Search" style="width: 100%">
+    <input class="controls" id="location" name="location" placeholder="Where can I buy one?" style="width: 100%" required>
+    <%# Hidden inputs to grab long/lat of location field %>
     <input type="hidden" name="latitude">
     <input type="hidden" name="longitude">
   </div>
   <div>
     <label for="otherInfo">Any other information...</label>
-    <textarea name="otherInfo" id="otherInfo"></textarea>
+    <textarea name="otherInfo" id="otherInfo" placeholder="Further info..."></textarea>
   </div>
   <button class="button">Create Post</button>
 </form>
