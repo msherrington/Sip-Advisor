@@ -1,18 +1,21 @@
-<h1><img src="../assets/images/marker.png">Sip<span>Advisor</span></h1>
+<div class="row">
+  <div class="medium-8 medium-centered large-6 large-centered columns">
 <h4>Login</h4>
-<br>
 <form method="POST" action="/login">
-  <div>
+  <div class="row column log-in-form">
     <label for="email">Email</label>
     <input type="text" name="email" id="email" placeholder="Email" required>
-  </div>
-  <div>
+  <%# </div>
+  <div>%>
     <label for="password">Password</label>
     <input type="password" name="password" id="password" placeholder="Password" required>
   </div>
 
-  <button class="button">Login</button>
+    <button class="button">Login</button>
+    <a href="<%= oauth.github.getLoginURL() %>"><img class="loginBtn" src="../assets/images/github.png"></a>
+    <a href="<%= oauth.facebook.getLoginURL() %>"><img class="loginBtn" src="../assets/images/facebook.png"></a>
 </form>
 <br>
-<a href="<%= oauth.github.getLoginURL() %>"><img class="loginBtn" src="../assets/images/github.png"></a>
-<a href="<%= oauth.facebook.getLoginURL() %>"><img class="loginBtn" src="../assets/images/facebook.png"></a>
+
+</div>
+</div>

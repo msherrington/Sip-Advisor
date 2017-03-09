@@ -1,29 +1,32 @@
-<h1>Edit Drink</h1>
-
+<h4>Edit Drink</h4>
+<div class="row">
+  <div class="medium-8 medium-centered large-6 large-centered columns">
 <form method="POST" action="/drinks/<%= drink.id %>" enctype="multipart/form-data">
 
   <div>
     <img src="<%= drink.imageSRC %>">
-  </div>
+  <%# </div>
 
-  <div>
+  <div>%>
     <p><b>Location:</b> <%= drink.location %></b></p>
-  </div>
+  <%# </div>
 
-  <div>
+  <div>%>
     <label for="name">Drink Name</label>
     <textarea name="name" id="name" placeholder="e.g. Sangria" required><%= drink.name %></textarea>
-  </div>
+  <%# </div>
 
-  <div>
+  <div>%>
     <label for="description">Description</label>
     <textarea name="description" id="description"placeholder="What is it?" required maxlength="255"><%= drink.description %></textarea>
-  </div>
+  <%# </div>
 
-  <div>
+  <div>%>
     <label for="otherInfo">Any other information...</label>
     <textarea name="otherInfo" id="otherInfo" placeholder="Further info..." required maxlength="255"><%= drink.otherInfo %></textarea>
   </div>
 
   <button class="button">Update</button>
 </form>
+</div>
+</div>
