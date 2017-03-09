@@ -51,7 +51,7 @@ function usersUpdate(req, res, next) {
       return user.save();
     })
     .then((user) => {
-      req.flash('success', `${user.name} has been updated.`);
+      req.flash('success', 'Your profile has been updated.');
       res.redirect(`/users/${user.id}`);
     })
     .catch(next);

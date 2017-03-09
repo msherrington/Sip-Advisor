@@ -4,16 +4,22 @@
     <input type="hidden" name="_method" value="PUT">
 
     <div>
+      <img src="<%= user.imageSRC %>" alt="Profile Image">
+      <%# <label for="image">Profile Image</label>
+      <input type="file" name="image" id="image">%>
+    </div>
+
+    <div>
       <label for="username">Username</label>
-      <input type="text" name="username" id="username" value="<%= user.username %>">
+      <input type="text" name="username" id="username" placeholder="Username" value="<%= user.username %>" required>
     </div>
 
     <div>
       <label for="email">Email</label>
-      <input type="text" name="email" id="email" value="<%= user.email %>">
+      <input type="text" name="email" id="email" placeholder="Email" value="<%= user.email %>" required>
     </div>
 
-    <div>
+    <%# <div>
       <label for="password">New Password</label>
       <input type="password" name="password" id="password">
     </div>
@@ -21,13 +27,7 @@
     <div>
       <label for="passwordConfirmation">Password Confirmation</label>
       <input type="password" name="passwordConfirmation" id="passwordConfirmation">
-    </div>
-
-    <div>
-      <img src="<%= user.imageSRC %>" alt="Profile Image">
-      <label for="image">Profile Image</label>
-      <input type="file" name="image" id="image">
-    </div>
+    </div>%>
 
     <div>
       <label for="bio">About Me</label>

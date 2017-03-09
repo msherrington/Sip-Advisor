@@ -5,7 +5,7 @@
     <img class="thumbnail" src="<%= drink.imageSRC %>" alt="<%= drink.name %>">
     <a href="/drinks/<%= drink.id %>"><h3><%= drink.name %></h3></a>
 
-    <p>Posted by: <%= drink.createdBy.username %></p>
+    <p>Posted by <%= drink.createdBy.username %></p>
 
   </div>
 <% }) %>

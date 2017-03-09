@@ -3,10 +3,10 @@
 <div class="row">
 <img src="<%= drink.imageSRC %>">
 <h3><%= drink.name %></h3>
-<p>Posted by: <a href="/users/<%= drink.createdBy.id %>"><%= drink.createdBy.username %></a></p>
-<p>Description: <%= drink.description %></p>
-<p>Other info: <%= drink.otherInfo %></p>
-<p>Location: <%= drink.location %></p>
+<p>Posted by <a href="/users/<%= drink.createdBy.id %>"><%= drink.createdBy.username %></a></p>
+<p>What is it? <%= drink.description %></p>
+<p>Where is it? <%= drink.location %></p>
+<p>Any more info? <%= drink.otherInfo %></p>
 <p><a href="/">Go to map</a></p>
 <% if(locals.isAuthenticated && drink.ownedBy(user)) { %>
   <a href="/drinks/<%= drink.id %>/edit" class="button">Edit Drink</a>

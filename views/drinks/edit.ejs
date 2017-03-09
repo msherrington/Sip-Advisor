@@ -1,28 +1,29 @@
 <h1>Edit Drink</h1>
 
 <form method="POST" action="/drinks/<%= drink.id %>" enctype="multipart/form-data">
+
   <div>
     <img src="<%= drink.imageSRC %>">
-    <label for="image">Change Image</label>
-    <input type="file" name="image" id="image">
   </div>
+
+  <div>
+    <p><b>Location:</b> <%= drink.location %></b></p>
+  </div>
+
   <div>
     <label for="name">Drink Name</label>
-    <textarea name="name" id="name"><%= drink.name %></textarea>
+    <textarea name="name" id="name" placeholder="e.g. Sangria" required><%= drink.name %></textarea>
   </div>
+
   <div>
     <label for="description">Description</label>
-    <textarea name="description" id="description"><%= drink.description %></textarea>
+    <textarea name="description" id="description"placeholder="What is it?" required maxlength="255"><%= drink.description %></textarea>
   </div>
-  <div>
-    <label for="location">Location</label>
-    <input class="controls" id="location" name="location" value="<%= drink.location %>" style="width: 100%">
-    <input type="hidden" name="latitude">
-    <input type="hidden" name="longitude">
-  </div>
+
   <div>
     <label for="otherInfo">Any other information...</label>
-    <textarea name="otherInfo" id="otherInfo"><%= drink.otherInfo %></textarea>
+    <textarea name="otherInfo" id="otherInfo" placeholder="Further info..." required maxlength="255"><%= drink.otherInfo %></textarea>
   </div>
+
   <button class="button">Update</button>
 </form>
