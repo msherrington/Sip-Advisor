@@ -7,16 +7,16 @@
 
         <div>
           <label for="image">Upload Image</label>
-          <input type="file" name="image" id="image" required>
+          <input type="file" name="image" id="image" required novalidate>
 
           <label for="name">Drink Name</label>
-          <textarea name="name" id="name" placeholder="e.g. Sangria" required></textarea>
+          <textarea name="name" id="name" placeholder="e.g. Sangria" required novalidate></textarea>
 
           <label for="description">Description</label>
-          <textarea name="description" id="description" placeholder="What is it?" required></textarea>
+          <textarea name="description" id="description" placeholder="What is it?" required novalidate></textarea>
 
           <label for="location">Location</label>
-          <input class="controls" id="location" name="location" placeholder="Where can I buy one?" required>
+          <input class="controls" id="location" name="location" placeholder="Where can I buy one?" required novalidate>
           <%# Hidden inputs to grab long/lat of location field %>
           <input type="hidden" name="latitude">
           <input type="hidden" name="longitude">
