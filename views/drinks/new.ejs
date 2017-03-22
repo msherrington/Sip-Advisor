@@ -3,17 +3,17 @@
 <br>
   <div class="row">
     <div class="medium-8 medium-centered large-6 large-centered columns">
-      <form method="POST" action="/drinks" enctype="multipart/form-data">
+      <form method="POST" action="/drinks" enctype="multipart/form-data" novalidate>
 
         <div>
           <label for="image">Upload Image</label>
-          <input type="file" name="image" id="image" required novalidate>
+          <input type="file" name="image" id="image" required>
 
           <label for="name">Drink Name</label>
-          <textarea name="name" id="name" placeholder="e.g. Sangria" required novalidate></textarea>
+          <textarea name="name" id="name" placeholder="e.g. Sangria" required></textarea>
 
           <label for="description">Description</label>
-          <textarea name="description" id="description" placeholder="What is it?" required novalidate></textarea>
+          <textarea name="description" id="description" placeholder="What is it?" required></textarea>
 
           <label for="location">Location</label>
           <input class="controls" id="location" name="location" placeholder="Where can I buy one?" required>

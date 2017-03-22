@@ -2,7 +2,7 @@
 <h4>Edit Drink</h4>
 <div class="row">
   <div class="medium-8 medium-centered large-6 large-centered columns">
-    <form method="POST" action="/drinks/<%= drink.id %>" enctype="multipart/form-data">
+    <form method="POST" action="/drinks/<%= drink.id %>" enctype="multipart/form-data" novalidate>
 
       <div>
         <img src="<%= drink.imageSRC %>">
@@ -10,13 +10,13 @@
         <p><b>Location:</b> <%= drink.location %></b></p>
 
         <label for="name">Drink Name</label>
-        <textarea name="name" id="name" placeholder="e.g. Sangria" required novalidate><%= drink.name %></textarea>
+        <textarea name="name" id="name" placeholder="e.g. Sangria" required><%= drink.name %></textarea>
 
         <label for="description">Description</label>
-        <textarea name="description" id="description"placeholder="What is it?" required novalidate maxlength="255"><%= drink.description %></textarea>
+        <textarea name="description" id="description"placeholder="What is it?" required maxlength="255"><%= drink.description %></textarea>
 
         <label for="otherInfo">Any other information...</label>
-        <textarea name="otherInfo" id="otherInfo" placeholder="Further info..." required novalidate maxlength="255"><%= drink.otherInfo %></textarea>
+        <textarea name="otherInfo" id="otherInfo" placeholder="Further info..." required maxlength="255"><%= drink.otherInfo %></textarea>
       </div>
 
       <button class="button">Update</button>
