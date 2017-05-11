@@ -6,7 +6,7 @@
 
 In the second project of the Web Development Immersive course we were tasked with designing and building a full-stack RESTful application with authentication and an authorisation flow. I was keen to develop an app which would build on the previous weeks of learning whilst also providing me with a challenge.
 
-####The result is... SipAdvisor ([click to use app](https://fierce-reaches-99985.herokuapp.com/))
+####The result is... SipAdvisor ([click to use app](https://sip-advisor.herokuapp.com/))
 
 ![](src/assets/images/welcome.png)
 
