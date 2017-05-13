@@ -23,8 +23,6 @@ In the second project of the Web Development Immersive course we were tasked wit
 
 ###Wire Framing
 
-([View on MyBalsamiq](https://generalassembly.mybalsamiq.com/projects/wdi-ldn-25/Sip%20Advisor))
-
 ![](src/assets/images/wireframes.png)
 
 ***
