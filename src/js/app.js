@@ -1,10 +1,4 @@
 /* global google:ignore mapStyles:ignore */
-
-// removes strange characters #_=_ after facebook login
-if (window.location.hash === '#_=_') {
-  window.location.hash = '';
-}
-
 $(() => {
 
   // Declaring map variables
