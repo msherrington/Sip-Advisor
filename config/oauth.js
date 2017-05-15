@@ -12,8 +12,8 @@ module.exports = {
   },
 
   facebook: {
-    loginURL: 'https://www.facebook.com/v2.8/dialog/oauth',
-    accessTokenURL: 'https://graph.facebook.com/v2.8/oauth/access_token',
+    loginURL: 'https://www.facebook.com/v2.9/dialog/oauth',
+    accessTokenURL: 'https://graph.facebook.com/v2.9/oauth/access_token',
     clientId: process.env.FB_API_KEY,
     clientSecret: process.env.FB_API_SECRET,
     scope: 'user:email',
