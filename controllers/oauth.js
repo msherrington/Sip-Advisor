@@ -58,7 +58,7 @@ function facebook(req, res, next) {
     url: oauth.facebook.accessTokenURL,
     qs: {
       client_id: oauth.facebook.clientId,
-      redirect_uri: 'http://sip-advisor.herokuapp.com/oauth/facebook',
+      redirect_uri: 'https://sip-advisor.herokuapp.com/oauth/facebook',
       client_secret: oauth.facebook.clientSecret,
       code: req.query.code
     },
