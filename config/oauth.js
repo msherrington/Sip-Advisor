@@ -19,7 +19,8 @@ module.exports = {
     scope: 'user:email',
     appURL: process.env.APP_URL || 'http://localhost:3000/',
     getLoginURL() {
-      return `${this.loginURL}?client_id=${this.clientId}&redirect_uri=${this.appURL}/oauth/facebook`;
+      // return `${this.loginURL}?client_id=${this.clientId}&redirect_uri=${this.appURL}/oauth/facebook`;
+      return `${this.loginURL}?client_id=${this.clientId}&redirect_uri=${this.appURL}`;
     }
   }
 };
