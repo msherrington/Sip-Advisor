@@ -95,7 +95,6 @@ function facebook(req, res, next) {
 
    req.flash('info', `Welcome back ${user.username}!`);
    res.redirect('/');
-   window.location.replace('https://sip-advisor.herokuapp.com');
  })
  .catch(next);
 }
