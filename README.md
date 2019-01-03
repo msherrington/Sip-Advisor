@@ -1,16 +1,16 @@
-##GA WDI 25 London - Project 2
+## GA WDI 25 London - Project 2
 
-#SipAdvisor
+# SipAdvisor
 
-######A RESTful app with Google Maps API integration
+###### A RESTful app with Google Maps API integration
 
 In the second project of the Web Development Immersive course we were tasked with designing and building a full-stack RESTful application with authentication and an authorisation flow. I was keen to develop an app which would build on the previous weeks of learning whilst also providing me with a challenge.
 
-####The result is... SipAdvisor ([click to use app](https://sip-advisor.herokuapp.com/))
+#### The result is... SipAdvisor ([click to use app](https://sip-advisor.herokuapp.com/))
 
 ![](src/assets/images/welcome.png)
 
-###User Interaction
+### User Interaction
 
 * The app is designed for use by travellers who enjoy trying local drinks in the countries they travel to.
 * Users can register in the usual way, or simply sign in using their GitHub or FaceBook account.
@@ -21,13 +21,13 @@ In the second project of the Web Development Immersive course we were tasked wit
 
 ***
 
-###Wire Framing
+### Wire Framing
 
 ![](src/assets/images/wireframes.png)
 
 ***
 
-###How It Works
+### How It Works
 
 The app has two main models - Users and Drinks. It also has an embedded Google Map with user's posts plotted in appropriate locations.
 
@@ -45,7 +45,7 @@ On the homepage, the embedded Google Maps has a geolocator which is activated as
 
 Drink show pages contain all details about the drink, including the name of the user who created the posting and a link to that user's profile page. If the user created the posting themselves, there are 2 buttons to edit or delete the post. There is also an option to see comments about the drink left by other users, create your own comments, and delete your own comments.
 
-####The Build
+#### The Build
 
 * HTML 5, CSS and jQuery were used to create the webpages.
 * NodeJS Express, Mongo and Mongoose ORM were used to create the databases.
@@ -54,14 +54,14 @@ Drink show pages contain all details about the drink, including the name of the 
 * The Google Web Font 'Montserrat' was used to style the text.
 
 
-###Problems & Challenges
+### Problems & Challenges
 
 The major challenge of this project was the ability store the location of each post and to plot it on the map. To overcome this, a Google Places autocomplete search box was included as a field within the 'add drink' form. Two hidden forms were also created, one for the longitude, another for the latitude.
 
 A function inside an event listener on the location search box was implemented to extract the long/lat data from the location and store it in the hidden fields. Then an each loop was used to loop through all drinks in the database and plot them as markers on the map. Sounds simple in writing but it was quite complex to set up when using a Google Maps API for the first time.
 
 
-###Future Improvements
+### Future Improvements
 
 I would like to make the following improvements to this app...
 
